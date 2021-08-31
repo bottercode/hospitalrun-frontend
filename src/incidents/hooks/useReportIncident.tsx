@@ -15,7 +15,7 @@ export function reportIncident(incident: Incident): Promise<Incident> {
       ...incident,
       code: getIncidentCode(),
       status: 'reported',
-      reportedBy: 'some user',
+      reportedBy: incident.reportedBy,
       reportedOn: new Date(Date.now()).toISOString(),
     }
     return IncidentRepository.save(updatedIncident)
